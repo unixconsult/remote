@@ -14,8 +14,9 @@ volatile unsigned long diff;
 volatile uint8_t v;
 byte tgarray[3] ;
 
-float tgfloat[3];
-byte bytearray[12];
+//float tgfloat[3];
+uint16_t remotedata[4];
+byte bytearray[8];
 //The serial connection to the hc12
 SoftwareSerial ss(RXPin, TXPin);
 
@@ -25,9 +26,9 @@ void setup() {
  Serial.begin(9600);
   ss.begin(remotebaud);
   
-tgfloat[0]= 2.4;
- tgfloat[1]= 3.4;
- tgfloat[2]= 4.4;
+remotedata[0]= 3;
+ remotedata[1]= 4;
+ remotedata[2]= 5;
 
 
 
@@ -36,14 +37,14 @@ tgfloat[0]= 2.4;
 
 void loop() {
 
-  memcpy(bytearray, tgfloat, sizeof bytearray);
+  memcpy(bytearray, remotedata, sizeof bytearray);
 
 
 //ss.write (tgarray,3); //one more than array index - number of bytes
 
-ss.write (bytearray,sizeof bytearray); //needs delay of (sizeof bytearray)ms 
+ss.write (bytearray,sizeof bytearray); //needs delay of (sizeof bytearray)ms +3 
 delay(15);
- tgfloat[0]=  analogRead(A0); // vor-zurück vor 1023
- tgfloat[1]=  analogRead(A1);//rechts-links  rechts 1023 , links 0
+ remotedata[0]=  analogRead(A0); // vor-zurück vor 1023
+ remotedata[1]=  analogRead(A1);//rechts-links  rechts 1023 , links 0
 }
 
