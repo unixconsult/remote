@@ -1,0 +1,5 @@
+lm4flash .pioenvs/lptm4c1230c3pm/firmware.bin
+
+platformio init --board lptm4c1230c3pm
+
+picocom -b 9600 /dev/ttyUSB0
