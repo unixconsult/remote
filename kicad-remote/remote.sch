@@ -1,9 +1,9 @@
 EESchema Schematic File Version 2
+LIBS:remote-rescue
 LIBS:power
 LIBS:device
 LIBS:switches
 LIBS:relays
-LIBS:motors
 LIBS:transistors
 LIBS:conn
 LIBS:linear
@@ -31,8 +31,7 @@ LIBS:opto
 LIBS:atmel
 LIBS:contrib
 LIBS:valves
-LIBS:user
-LIBS:arduino
+LIBS:remote-cache
 EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
@@ -59,7 +58,7 @@ F 3 "" H 6700 7200 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L POT RV?
+L POT-RESCUE-remote RV?
 U 1 1 5AEF645A
 P 1900 3550
 F 0 "RV?" V 1725 3550 50  0000 C CNN
@@ -72,7 +71,7 @@ $EndComp
 Wire Wire Line
 	3600 3550 2050 3550
 $Comp
-L POT RV?
+L POT-RESCUE-remote RV?
 U 1 1 5AEF64A4
 P 2200 3800
 F 0 "RV?" V 2025 3800 50  0000 C CNN
@@ -118,14 +117,6 @@ F 3 "" H 7800 3150 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	6200 2850 7500 2850
-Wire Wire Line
-	7500 2850 7500 3050
-Wire Wire Line
-	6200 2950 7400 2950
-Wire Wire Line
-	7400 2950 7400 3150
-Wire Wire Line
 	7400 3150 7500 3150
 $Comp
 L Motor_DC M?
@@ -150,4 +141,53 @@ Wire Wire Line
 	8450 2950 8450 2900
 Wire Wire Line
 	8450 2900 8600 2900
+Wire Wire Line
+	7500 2950 7500 3050
+Wire Wire Line
+	7400 3050 7400 3150
+$Comp
+L CONN_01X02 P?
+U 1 1 5AF2914B
+P 6600 2800
+F 0 "P?" H 6600 2950 50  0000 C CNN
+F 1 "ss-hc-12" V 6700 2800 50  0000 C CNN
+F 2 "" H 6600 2800 50  0000 C CNN
+F 3 "" H 6600 2800 50  0000 C CNN
+	1    6600 2800
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6200 2750 6400 2750
+Wire Wire Line
+	6200 2850 6400 2850
+Wire Wire Line
+	6200 3250 6950 3250
+$Comp
+L IRF9540N Q?
+U 1 1 5AF29B80
+P 7700 2450
+F 0 "Q?" H 7950 2525 50  0000 L CNN
+F 1 "p-chn" H 7950 2450 50  0000 L CNN
+F 2 "TO-220" H 7950 2375 50  0000 L CIN
+F 3 "" H 7700 2450 50  0000 L CNN
+	1    7700 2450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7800 2650 7800 2750
+Connection ~ 6950 3250
+Wire Wire Line
+	6950 3250 6950 2500
+Wire Wire Line
+	6200 3350 7200 3350
+Wire Wire Line
+	7200 3350 7200 2950
+Wire Wire Line
+	7200 2950 7500 2950
+Wire Wire Line
+	6200 3450 7300 3450
+Wire Wire Line
+	7300 3450 7300 3050
+Wire Wire Line
+	7300 3050 7400 3050
 $EndSCHEMATC
